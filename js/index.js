@@ -110,9 +110,37 @@ $(document).ready(function (){
 
 
 
-    $(".accordion__item").on("click", function () {
-        $(".accordion__item").removeClass("active")
-        $(this).addClass("active")
+    function accordion(obj) {
+        const titleClick = obj.titleClick,
+            allContent = obj.allContent;
+        $(titleClick).click(function () {
+            let content = $(this).siblings(allContent);
+            if (content.is(':visible')) {
+                content.slideUp(); // убираем
+                $(allContent).removeClass('active');
+                $(this).removeClass('active');
+                $(this)
+                    .parents('.offcanvas__proxy-for-geo-select-multilevel')
+                    .removeClass('active');
+                $(this).children().removeClass('active'); //убираем активный класс у стрелки к примеру
+            } else {
+                content.slideDown(); //показываем
+                $(titleClick).removeClass('active');
+                $(allContent).removeClass('active');
+
+                $(this).addClass('active');
+                content.addClass('active');
+                $(this)
+                    .parents('.offcanvas__proxy-for-geo-select-multilevel')
+                    .addClass('active');
+                $(this).children().addClass('active'); //добавляем активный класс у стрекли к примеру
+            }
+            $(titleClick).not(this).siblings(allContent).stop(true, true).slideUp();
+        });
+    }
+    accordion({
+        titleClick: '.accordion .accordion__header'
+
     });
 
     /* item addClass & removeClass with toggleClass */

@@ -530,12 +530,12 @@ p {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
+
 }
 
 .wee__do__item {
     width: 50%;
     padding: 0 15px;
-    margin: auto 0;
 }
 
 
@@ -562,11 +562,12 @@ p {
     display: block;
 }
 
-.accordion__item.active .accordion__header:after {
+.accordion__header.active:after {
     transform: translateY(-50%) rotate(-45deg);
+
 }
 
-.accordion__item.active .accordion__header {
+.accordion__header.active {
     border-bottom: 1px solid #e5e5e5e5;
 }
 
@@ -576,6 +577,7 @@ p {
 
     border-bottom: 1px solid transparent;
     cursor: pointer;
+
 }
 
 .accordion__header:after {
@@ -593,6 +595,7 @@ p {
     z-index: 1;
 
     transform: translateY(-50%) rotate(135deg);
+    transition: 0.5s;
 
 }
 
